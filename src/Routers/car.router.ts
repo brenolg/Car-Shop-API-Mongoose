@@ -2,12 +2,21 @@ import { Router } from 'express';
 import CarController from '../Controllers/car.controller';
 import resolver from '../Utils/resolver';
 
-const promiseRouter = Router();
-const carRouter = resolver(promiseRouter); 
+const carRouter = Router();
 
-promiseRouter.post(
-  '/cars',
-  (req, res) => new CarController(req, res).create(),
+carRouter.post(
+  '/',
+  resolver((req, res) => new CarController(req, res).create()),
+);
+
+carRouter.get(
+  '/',
+  resolver((req, res) => new CarController(req, res).findAll()),
+);
+
+carRouter.get(
+  '/:id',
+  resolver((req, res) => new CarController(req, res).findById()),
 );
 
 export default carRouter;

@@ -4,9 +4,7 @@ const resolver = (handlerFn: Handler) => (
   req: Request,
   res: Response,
   next: NextFunction,
-) => {
-  Promise.resolve(handlerFn(req, res, next))
-    .catch((e) => next(e));
-};
+) => Promise.resolve(handlerFn(req, res, next))
+  .catch((e) => next(e));
 
 export default resolver;

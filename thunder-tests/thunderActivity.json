@@ -8,14 +8,56 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-04-27T14:08:41.610Z",
-    "modified": "2023-04-27T14:15:11.995Z",
+    "modified": "2023-04-27T18:17:58.582Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"model\": \"Marea\",\n  \"year\": 2002,\n  \"color\": \"Black\",\n  \"buyValue\": 15.990,\n  \"doorsQty\": 4,\n  \"seatsQty\": 5\n}",
+      "raw": "{\n  \"model\": \"Test\",\n  \"year\": 2002,\n  \"color\": \"Black\",\n  \"status\": true,\n  \"buyValue\": 15.990,\n  \"doorsQty\": 4,\n  \"seatsQty\": 5\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "60b33b61-519e-44c5-a8c0-c11267e209f1",
+    "colId": "history",
+    "containerId": "",
+    "name": "get id",
+    "url": "http://localhost:3001/cars/644abc08e1cf95783bdcfb92",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-27T14:08:41.610Z",
+    "modified": "2023-04-27T18:17:14.627Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "974a3717-afe4-4eb3-8e72-dfdab57629aa",
+    "colId": "history",
+    "containerId": "",
+    "name": "get All",
+    "url": "http://localhost:3001/cars",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-27T14:08:41.610Z",
+    "modified": "2023-04-27T18:17:44.784Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e912034f-0c15-42b6-a771-0bf2fa358d97",
+    "colId": "history",
+    "containerId": "",
+    "name": "get id Invalid",
+    "url": "http://localhost:3001/cars/644abc08e1cf95783",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-27T14:08:41.610Z",
+    "modified": "2023-04-27T18:19:35.316Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
