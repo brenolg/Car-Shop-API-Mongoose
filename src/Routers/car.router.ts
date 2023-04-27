@@ -19,4 +19,9 @@ carRouter.get(
   resolver((req, res) => new CarController(req, res).findById()),
 );
 
+carRouter.put(
+  '/:id',
+  resolver((req, res) => new CarController(req, res).updateById()),
+);
+
 export default carRouter;

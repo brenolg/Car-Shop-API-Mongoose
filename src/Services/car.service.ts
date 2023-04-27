@@ -32,4 +32,13 @@ export default class CarService {
     
     return cars.map((car) => this.createCarDomain(car as ICar));
   }
+
+  public async updateById(id: string, carData: ICar) {
+    if (!isValidObjectId(id)) throw new ApiError(422, 'Invalid mongo id');
+    const car = await this.model.updateById(id, carData);
+
+    if (!car) throw new ApiError(404, 'Car not found');
+
+    return this.createCarDomain(car as ICar);
+  }
 }

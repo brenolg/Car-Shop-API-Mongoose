@@ -31,6 +31,7 @@ export default class CarController {
 
   public async findAll() {
     const allCars = await this.service.findAll();
+
     return this.res.status(200).json(allCars);
   }
 
@@ -39,5 +40,14 @@ export default class CarController {
 
     const car = await this.service.findById(id);
     return this.res.status(200).json(car);
+  }
+
+  public async updateById() {
+    const { id } = this.req.params;
+    const carData = { ...this.req.body };
+    
+    const updatedCar = await this.service.updateById(id, carData);
+
+    return this.res.status(200).json(updatedCar);
   }
 }

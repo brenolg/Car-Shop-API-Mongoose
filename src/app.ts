@@ -1,11 +1,11 @@
 import express from 'express';
-import carRouter from './Routers/car.router';
+import routes from './Routers';
 import ErrorHandler from './Middlewares/ErrorHandler';
 
 const app = express();
 
 app.use(express.json());
-app.use('/cars', carRouter);
+app.use('/cars', routes.carRouter);
 
 app.use(ErrorHandler.handle);
 
