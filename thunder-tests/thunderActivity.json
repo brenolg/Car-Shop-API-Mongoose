@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "13a6d001-878a-4665-8a21-41f124bf9060",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3001/cars",
+    "url": "http://localhost:3001/cars",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-27T14:08:41.610Z",
+    "modified": "2023-04-27T14:15:11.995Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"model\": \"Marea\",\n  \"year\": 2002,\n  \"color\": \"Black\",\n  \"buyValue\": 15.990,\n  \"doorsQty\": 4,\n  \"seatsQty\": 5\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
