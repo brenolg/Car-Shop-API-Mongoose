@@ -6,6 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use('/cars', routes.carRouter);
+app.use('/motorcycles', routes.motorcycleRouter);
 
 app.use(ErrorHandler.handle);
 
