@@ -5,7 +5,7 @@ import MotorcycleService from '../../../src/Services/motorcycle.service';
 import { motorcycleBody, motorcycleList, id, motorcycleResponse } 
   from '../../Mocks/motorcycleMocks';
 
-describe('Testando a rota /', function () {
+describe('Testando a rota Motorcycles', function () {
   afterEach(sinon.restore);
   describe('POST /motorcycles', function () {
     it('Quando a requisição é feita com sucesso', async function () {
