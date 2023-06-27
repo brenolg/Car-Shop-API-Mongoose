@@ -1,53 +1,41 @@
-# Futebol Club API 
+# Car Shop API 
 
-O projeto Futebol Club consiste em desenvolver uma API utilizando a metodologia TDD (Desenvolvimento Orientado por Testes) e integrar as aplicações front-end e back-end usando o Docker Compose. A API será consumida por um front-end já disponibilizado, que exibirá informações sobre partidas e classificações de futebol.
+API para gerenciar uma concessionária de veículos. O objetivo era aplicar os princípios da Programação Orientada a Objetos (POO) na arquitetura Model-Service-Controller (MSC), utilizando TypeScript como linguagem de programação e o ODM (Object Document Mapper) Mongoose para se conectar a um banco de dados MongoDB.
 
-O objetivo principal do projeto é aplicar todos os conhecimentos adquiridos até o momento, incluindo a dockerização das aplicações, a modelagem de dados com MySQL usando o Sequelize, a criação e associação de tabelas, a construção de uma API REST com endpoints para consumir os modelos criados e a implementação de um CRUD com TypeScript utilizando o ORM.
+A importância desse projeto residia na criação de uma API seguindo os pilares da POO e a arquitetura MSC, proporcionando benefícios como escalabilidade e facilidade de manutenção da aplicação. Durante o desenvolvimento, foi considerada a capacidade de expansão da API, permitindo futuras mudanças, como a substituição do banco de dados utilizado, sem afetar a estrutura geral da aplicação.
 
-Como responsável pelo desenvolvimento do back-end dockerizado, você utilizou os princípios de Programação Orientada a Objetos (POO) e os princípios SOLID para garantir a qualidade do código. Além disso, foi implementada a autenticação com JWT (JSON Web Token) para algumas rotas que exigem permissão, garantindo que apenas usuários autenticados possam fazer alterações.
+No contexto desse projeto, foram exercitados os pilares da POO, como Herança, Abstração, Encapsulamento e Polimorfismo, bem como foram utilizados Composição e criadas e utilizadas Interfaces. A implementação em TypeScript envolveu a criação de Classes, Instâncias, Atributos, Métodos e Objetos. Além disso, foram aplicados os conhecimentos de MongoDB, TypeScript e POO para desenvolver uma API com as operações de CRUD (Create, Read, Update, Delete).
 
-No geral, o projeto busca simular um cenário real, onde é necessário integrar o front-end e o back-end, utilizando um banco de dados relacional e seguindo as regras de negócio estabelecidas. O resultado final será uma API funcional que fornecerá os dados necessários para o front-end exibir as informações de forma adequada aos usuários.
+O escopo do projeto incluiu etapas como a criação de uma rota para cadastrar carros, um endpoint para listar carros, a escrita de testes para cobrir uma porcentagem da camada de Service, uma rota para atualizar carros por ID, uma rota para cadastrar motos, testes adicionais para cobrir uma porcentagem maior da camada de Service e uma rota para listar motos. Como bônus, foi implementada uma rota para atualizar motos por ID, além de mais testes para cobrir uma porcentagem maior da camada de Service.
+
+O projeto foi desenvolvido individualmente, com foco na aplicação dos princípios da POO na construção da API. O objetivo final era criar um sistema de gerenciamento de uma concessionária de veículos, utilizando o banco de dados MongoDB e o framework Mongoose.
 
 ## Funcionalidades
 
-- Dockerização dos apps, network, volume e compose;
-- Modelagem de dados com MySQL através do Sequelize;
-- Criação e associação de tabelas usando models do sequelize;
-- Construção de uma API REST com endpoints para consumir os models criados;
-- Construção de um CRUD com TypeScript, utilizando ORM;
-- Autenticação de rotas utilizando JWT.
+- Cadastro de carros: O projeto permite cadastrar carros na concessionária, fornecendo informações como marca, modelo, ano, cor e preço.
+- Listagem de carros: É possível obter uma lista de todos os carros cadastrados na concessionária.
+- Atualização de carros por ID: O projeto oferece uma rota para atualizar as informações de um carro específico com base no seu ID.
+- Cadastro de motos: Além dos carros, o projeto permite cadastrar motos na concessionária, fornecendo informações como marca, modelo, ano, cor e preço.
+- Listagem de motos: É possível obter uma lista de todas as motos cadastradas na concessionária.
+- Atualização de motos por ID (bônus): O projeto possui uma rota adicional que permite atualizar as informações de uma moto específica com base no seu ID.
 - Programação Orientada a Objetos e princípios SOLID:
 - Implementar, em TypeScript: `Classes`, `Instâncias`, `Atributos` e `Métodos`.
 
 # Tecnologias utilizadas
 
 
-- React js  
 - TypeScript
 - Node.js
 - Express.js
-- Sequelize
-- JSON Web Token (JWT)
-- Bcrypt.js 
+- MongoDB
+- Mongoose
+- Programação Orientada a Objetos (POO)
+- Arquitetura Model-Service-Controller (MSC)
+
   ### **Testes**
     - Mocha
     - Chai
     - Sinon
-
-## Banco de Dados
-<details close>
-    <summary><strong> Diagrama e Tabelas</strong></summary>
-
-  - MySQL 
-  1. #### **Diagrama ER**
-<img src="./database.png"/>         
-
-  2. #### **Seeders**  
-  O banco de dados contém:
-  - tabela `users` com usuários válidos com hash das senhas e alguns inválidos, estes útimos utilizados para os testes avaliativos.
-  - tabela `teams` com a lista de todos os times que estão participando do campeonato.
-  - tabela `matches` com algumas partidadas finalizadas e outras em andamento.
- </details>
 
 ## Documentação da API
 
@@ -56,398 +44,234 @@ No geral, o projeto busca simular um cenário real, onde é necessário integrar
 
 | Endpoint     | Método HTTP | Descrição               | 
 | :----------- | :---------- | :---------------------- |
-| [`/login`](#endpoint-login)   | POST        | Faz o login com usuários do banco de dados 
-| [`/login/role`](#endpoint-loginrole)| GET         | :closed_lock_with_key: Retorna o *role* do usuário logado (user ou adm)  |
-| [`/teams`](#endpoint-teams)     | GET         | Retorna todos os times do campeonato
-| [`/teams/:id`](#parâmetro-id-teamsid) | GET         | Retorna o time especificado no id
-| [`/matches`](#endpoint-matches)   | GET         | Retorna todas as partidas 
-| [`/matches`](#endpoint-matches)           | POST         | :closed_lock_with_key: Insere uma nova partida em andamento.
-| [`/matches?inProgress=true`](#parâmetro-inprogress-matchesinprogress) | GET         | Retorna as partidas em andamento.
-| [`/matches?inProgress=false`](#parâmetro-inprogress-matchesinprogress)| GET         | Retorna as partidas finalizadas.
-| [`/matches/:id`](#parâmetro-id-matchesid)    | PATCH       | :closed_lock_with_key: Atualiza a partida de acordo com seu id.
-| [`/matches/:id/finish`](#endpoint-matchesidfinish) | PATCH       | :closed_lock_with_key: Finaliza uma partida em andamento.
-| [`/leaderboard`](#endpoint-leaderboard)       | GET          | Retorna a classificação geral do campeonato.
-| [`/leaderboar/home`](#endpoint-leaderboardhome)   | GET          | Retorna a classificação dos times mandantes.
-| [`/leaderboard/away`](#endpoint-leaderboardaway)  | GET          | Retorna a classificação dos times visitantes.
+| `/cars`|  POST        |  Cadastra um novo carro|
+| `/cars`| GET         | Retorna todos os carros |
+| `/cars/:id`| GET         | Retorna o carro especificado no id|
+| `/cars/:id`| PUT         |  Atualiza um carro especificado no id|
+| `/motorcycles`| POST        | Cadastra uma nova moto|
+| `/motorcycles`| GET         |  Retorna todas as motos  |
+| `/motorcycles/:id`| GET         | Retorna a moto especificado no id|
+| `/motorcycles/:id` | PUT         | Atualiza uma moto especificada no id|
 
-:closed_lock_with_key: : Necessário que o `token` gerado no login seja enviado no headers como _"Authorization"_.
- </details>
-  
+</details>
 
-
-### **Corpo das requisições e respostas**  
+#### **Corpo das requisições e respostas**  
 > *Clique nas setas para ver mais*  
 
-#### **Endpoint:** `/login`  
-
-- <details><summary>Método POST </summary>  
-  Exemplo de corpo da requisção válido  
-
-    ```json
-    {
-      "email": "user@user.com",
-      "password": "secret_user", 
-    }
-    ```  
-
+#### **Endpoint:** `/cars`
+- <details><summary> Método POST</summary>  
   Respostas 
-  - Status: 200 OK  
+  
+    - O corpo da requisição e resposta deve seguir o formato abaixo com excessão do id que é gerado apenas na resposta:
+    - Status: 201 Created
+  
     ```json
-    {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTI3MTg5fQ.XS_9AA82iNoiVaASi0NtJpqOQ_gHSHhxrpIdigiT-fc" // jsonwebtoken gerado
-    }
-    ```
-    
-  - Status: 400 Bad Request
-    ```json
-    { "message": "All fields must be filled" }
-    ```
-    
-  - Status: 401 Unauthorized
-    ```json
-    { "message": "Invalid email or password" }
+      {
+        "id": "634852326b35b59438fbea2f",
+        "model": "Marea",
+        "year": 1992,
+        "color": "Red",
+        "status": true,
+        "buyValue": 12.000,
+        "doorsQty": 2,
+        "seatsQty": 5
+      }
     ```
 </details>
 
-#### **Endpoint:** `/login/role`
-- <details><summary>:closed_lock_with_key: Método GET</summary>  
-  Respostas  
-    - Status: 200 OK  
-      ```json
-      { "role": "admin" }
-      ```
-      
-    - Status: 401 Unauthorized
-      ```json
-      { "message": "Token not found" }
-      ```
-
-      ```json
-      { "message": "Token must be a valid token" }
-      ```
-</details>
-
-#### **Endpoint:** `/teams`
+#### **Endpoint:** `/cars`
 - <details><summary>Método GET</summary>
 
-  Resposta  
-  - Status: 200 OK
-    ```json
-    [
-      {
-        "id": 1,
-        "teamName": "Avaí/Kindermann"
-      },
-      {
-        "id": 2,
-        "teamName": "Bahia"
-      },
-      {
-        "id": 3,
-        "teamName": "Botafogo"
-      },
-      ...
-    ]
-    ```
+  Respostas  
+    - Status: 200 OK
+      ```json
+        [
+          {
+            "id": "634852326b35b59438fbea2f",
+            "model": "Marea",
+            "year": 2002,
+            "color": "Black",
+            "status": true,
+            "buyValue": 15.99,
+            "doorsQty": 4,
+            "seatsQty": 5
+          },
+          {
+            "id": "634852326b35b59438fbea31",
+            "model": "Tempra",
+            "year": 1995,
+            "color": "Black",
+            "buyValue": 39,
+            "doorsQty": 2,
+            "seatsQty": 5
+          }
+        ]
+      ```
 </details>
 
-#### **Parâmetro id:** `/teams/:id`
+#### **Parâmetro id:** `/cars/:id`
 - <details> <summary>Método GET</summary>
 
-  Resposta 
+  Respostas 
   - Status: 200 OK  
+      ```json
+        {
+          "id": "634852326b35b59438fbea2f",
+          "model": "Marea",
+          "year": 2002,
+          "color": "Black",
+          "status": true,
+          "buyValue": 15.99,
+          "doorsQty": 4,
+          "seatsQty": 5
+        }
+      ```
+  - Status 404 Not Found Error
+      ```json
+        { "message": "Car not found" }
+      ```
+
+  - Status 422 Unprocessable
+      ```json
+        { "message": "Invalid mongo id" }
+      ```
+</details>
+
+#### **Parâmetro id:** `/cars/:id`
+- <details><summary>Método PUT</summary>
+
+  Respostas 
+  - Status: 200 OK  
+      ```json
+        {
+          "id": "634852326b35b59438fbea2f",
+          "model": "Marea",
+          "year": 2002,
+          "color": "Black",
+          "status": true,
+          "buyValue": 15.99,
+          "doorsQty": 4,
+          "seatsQty": 5
+        }
+      ```
+  - Status 404 Not Found Error
+      ```json
+        { "message": "Car not found" }
+      ```
+
+  - Status 422 Unprocessable
+      ```json
+        { "message": "Invalid mongo id" }
+      ```
+</details>
+
+#### **Endpoint:** `/motorcycles`
+- <details><summary> Método POST</summary>  
+  Respostas 
+  
+    - O corpo da requisição e resposta deve seguir o formato abaixo com excessão do id que é gerado apenas na resposta:
+    - Status: 201 Created
+  
     ```json
     {
-      "id": 5,
-      "teamName": "Cruzeiro"
+      "model": "Honda Cb 600f Hornet",
+      "year": 2005,
+      "color": "Yellow",
+      "status": true,
+      "buyValue": 30.000,
+      "category": "Street",
+      "engineCapacity": 600
     }
     ```
 </details>
 
-#### **Endpoint:** `/matches`
+#### **Endpoint:** `/motorcycles`
 - <details><summary>Método GET</summary>
 
-  Resposta 
-  - Status: 200 OK  
-    ```json
-      [
-        {
-          "id": 1,
-          "homeTeamId": 16,
-          "homeTeamGoals": 1,
-          "awayTeamId": 8,
-          "awayTeamGoals": 1,
-          "inProgress": false,
-          "homeTeam": {
-            "teamName": "São Paulo"
-          },
-          "awayTeam": {
-            "teamName": "Grêmio"
-          }
-        },
-        ...
-        {
-          "id": 41,
-          "homeTeamId": 16,
-          "homeTeamGoals": 2,
-          "awayTeamId": 9,
-          "awayTeamGoals": 0,
-          "inProgress": true,
-          "homeTeam": {
-            "teamName": "São Paulo"
-          },
-          "awayTeam": {
-            "teamName": "Internacional"
-          }
-        }
-      ]
-    ```
-</details>
-
-- <details><summary>:closed_lock_with_key: Método POST</summary>
-  Requisição  
-
-  ```json
-  {
-    "homeTeamId": 16, // O valor deve ser o id do time
-    "awayTeamId": 8, // O valor deve ser o id do time
-    "homeTeamGoals": 2,
-    "awayTeamGoals": 1,
-  }
-  ```
-
-  Respostas 
-  - Status: 201 Created  
-    ```json
-    {
-      "id": 1,
-      "homeTeamId": 16,
-      "homeTeamGoals": 2,
-      "awayTeamId": 8,
-      "awayTeamGoals": 1,
-      "inProgress": true,
-    }
-    ```
-  
-  - Status: 401 Unauthorized
-    ```json
-    { "message": "Token not found" }
-    ```
-
-    ```json
-    { "message": "Token must be a valid token" }
-    ```
-  - Status: 404 Not Found
-    ```json
-    { "message": "There is no team with such id!" }
-    ```
-  - Status: 422 Unprocessable Entity
-    ```json
-    { "message": "It is not possible to create a match with two equal teams" }
-    ```
-</details>  
-
-
-#### **Parâmetro inProgress:** `/matches?inProgress=`
-- <details>
-  <summary>Método GET</summary>
-  Opções de query: <i>true</i> ou <i>false</i>  
-
-  Ex:  
-    ```
-    matches?inProgress=true
-    ```
-
-  Resposta 
-  - Status: 200 OK  
-    ```json
-    [
-      {
-        "id": 41,
-        "homeTeamId": 16,
-        "homeTeamGoals": 2,
-        "awayTeamId": 9,
-        "awayTeamGoals": 0,
-        "inProgress": true,
-        "homeTeam": {
-          "teamName": "São Paulo"
-        },
-        "awayTeam": {
-          "teamName": "Internacional"
-        }
-      },
-      {
-        "id": 42,
-        "homeTeamId": 6,
-        "homeTeamGoals": 1,
-        "awayTeamId": 1,
-        "awayTeamGoals": 0,
-        "inProgress": true,
-        "homeTeam": {
-          "teamName": "Ferroviária"
-        },
-        "awayTeam": {
-          "teamName": "Avaí/Kindermann"
-        }
-      }
-    ]
-    ```
-</details>
-
-#### **Parâmetro id:** `/matches/:id`
-- <details><summary>:closed_lock_with_key: Método PATCH</summary>
- 
-  Requisição:
-  ```json
-  {
-    "homeTeamGoals": 3,
-    "awayTeamGoals": 1
-  }
-  ```
-
-  Respostas 
-  - Status: 200 OK  
-    ```json
-    { "message": "Updated match!" } 
-    ```
-  
-  - Status: 401 Unauthorized
-    ```json
-    { "message": "Token not found" }
-    ```
-
-    ```json
-    { "message": "Token must be a valid token" }
-    ```
-</details>
-
-#### **Endpoint:** `/matches/:id/finish`
-- <details><summary>:closed_lock_with_key: Método PATCH</summary>
   Respostas  
-
-    - Status: 200 OK  
+    - Status: 200 OK
       ```json
-        { "message": "Finished" }
+        [
+          {
+            "id": "634852326b35b59438fbea2f",
+            "model": "Honda Cb 600f Hornet",
+            "year": 2005,
+            "color": "Yellow",
+            "status": true,
+            "buyValue": 30.000,
+            "category": "Street",
+            "engineCapacity": 600
+          },
+          {
+            "id": "634852326b35b59438fbea31",
+            "model": "Honda Cbr 1000rr",
+            "year": 2011,
+            "color": "Orange",
+            "status": true,
+            "buyValue": 59.900,
+            "category": "Street",
+            "engineCapacity": 1000
+          }
+        ]
       ```
-    
-    - Status: 401 Unauthorized
+</details>
+
+#### **Parâmetro id:** `/motorcycles/:id`
+- <details> <summary>Método GET</summary>
+
+  Respostas 
+  - Status: 200 OK  
       ```json
-        { "message": "Token not found" }
+        {
+          "id": "634852326b35b59438fbea2f",
+          "model": "Marea",
+          "year": 2002,
+          "color": "Black",
+          "status": true,
+          "buyValue": 15.99,
+          "doorsQty": 4,
+          "seatsQty": 5
+        }
       ```
-
+  - Status 404 Not Found Error
       ```json
-        { "message": "Token must be a valid token" }
+        { "message": "Motorcycle not found" }
+      ```
+
+  - Status 422 Unprocessable
+      ```json
+        { "message": "Invalid mongo id" }
       ```
 </details>
 
-#### **Endpoint:** `/leaderboard`
-- <details><summary>Método GET</summary>
+#### **Parâmetro id:** `/motorcycles/:id`
+- <details><summary>Método PUT</summary>
 
-  Resposta  
-  - Status: 200 OK
-    ```json
-    [
-      {
-        "name": "Palmeiras",
-        "totalPoints": 13,
-        "totalGames": 5,
-        "totalVictories": 4,
-        "totalDraws": 1,
-        "totalLosses": 0,
-        "goalsFavor": 17,
-        "goalsOwn": 5,
-        "goalsBalance": 12,
-        "efficiency": "86.67"
-      },
-        ...
-      {
-        "name": "Napoli-SC",
-        "totalPoints": 2,
-        "totalGames": 6,
-        "totalVictories": 0,
-        "totalDraws": 2,
-        "totalLosses": 4,
-        "goalsFavor": 3,
-        "goalsOwn": 15,
-        "goalsBalance": -12,
-        "efficiency": "11.11"
-      }
-    ]
-    ```
+  Respostas 
+  - Status: 200 OK  
+      ```json
+        {
+          "id": "634852326b35b59438fbea2f",
+          "model": "Honda Cb 600f Hornet",
+          "year": 2014,
+          "color": "Red",
+          "status": true,
+          "buyValue": 45.000,
+          "category": "Street",
+          "engineCapacity": 600
+        }
+      ```
+  - Status 404 Not Found Error
+      ```json
+        { "message": "Motorcycle not found" }
+      ```
+
+  - Status 422 Unprocessable
+      ```json
+        { "message": "Invalid mongo id" }
+      ```
 </details>
 
-#### **Endpoint:** `/leaderboard/home`
-- <details><summary>Método GET</summary>
-
-  Resposta  
-  - Status: 200 OK
-    ```json
-    [
-      {
-        "name": "Santos",
-        "totalPoints": 9,
-        "totalGames": 3,
-        "totalVictories": 3,
-        "totalDraws": 0,
-        "totalLosses": 0,
-        "goalsFavor": 9,
-        "goalsOwn": 3,
-        "goalsBalance": 6,
-        "efficiency": "100.00"
-      },
-      ...
-      {
-        "name": "Bahia",
-        "totalPoints": 0,
-        "totalGames": 3,
-        "totalVictories": 0,
-        "totalDraws": 0,
-        "totalLosses": 3,
-        "goalsFavor": 0,
-        "goalsOwn": 4,
-        "goalsBalance": -4,
-        "efficiency": "0.00"
-      }
-    ]
-    ```
-</details>
-
-#### **Endpoint:** `/leaderboard/away`
-- <details><summary>Método GET</summary>
-
-  Resposta  
-  - Status: 200 OK
-    ```json
-    [
-      {
-        "name": "Palmeiras",
-        "totalPoints": 6,
-        "totalGames": 2,
-        "totalVictories": 2,
-        "totalDraws": 0,
-        "totalLosses": 0,
-        "goalsFavor": 7,
-        "goalsOwn": 0,
-        "goalsBalance": 7,
-        "efficiency": "100.00"
-      },
-        ...
-      {
-        "name": "Napoli-SC",
-        "totalPoints": 0,
-        "totalGames": 3,
-        "totalVictories": 0,
-        "totalDraws": 0,
-        "totalLosses": 3,
-        "goalsFavor": 1,
-        "goalsOwn": 10,
-        "goalsBalance": -9,
-        "efficiency": "0.00"
-      }
-    ]
-    ```
-</details>  
-</details>
 
 
 ## Instalando localmente
@@ -455,16 +279,16 @@ No geral, o projeto busca simular um cenário real, onde é necessário integrar
 Caso deseje contribuir ou simplesmente rodar o projeto na sua máquina, siga as orientações: 
 
 . Clone o repositório   
-  `git clone git@github.com:brenolg/Futebol-Club-API-Sequelize.git`
+  `git clone https://github.com/brenolg/Car-Shop-API-Mongoose`
 
 . Instale as dependências no diretório raiz  
   `npm install`
 
 ### **Docker**
 1. Na raíz do projeto rode o comando:  
-  `npm run compose:up`  
+  `docker-compose up -d`  
 2. Em seguida abra o terminal interativo do container:  
-  `docker exec -it app_backend sh`  
+  `docker exec -it car_shop bash`  
 3. Instale as dependências dentro do container:  
   `npm install`
 
