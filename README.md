@@ -17,9 +17,10 @@ O projeto foi desenvolvido individualmente, com foco na aplicação dos princíp
 - Atualização de carros por ID: O projeto oferece uma rota para atualizar as informações de um carro específico com base no seu ID.
 - Cadastro de motos: Além dos carros, o projeto permite cadastrar motos na concessionária, fornecendo informações como marca, modelo, ano, cor e preço.
 - Listagem de motos: É possível obter uma lista de todas as motos cadastradas na concessionária.
-- Atualização de motos por ID (bônus): O projeto possui uma rota adicional que permite atualizar as informações de uma moto específica com base no seu ID.
+- Atualização de motos por ID: O projeto possui uma rota que permite atualizar as informações de uma moto específica com base no seu ID.
 - Programação Orientada a Objetos e princípios SOLID:
 - Implementar, em TypeScript: `Classes`, `Instâncias`, `Atributos` e `Métodos`.
+- Arquitetura Model-Service-Controller (MSC)
 
 # Tecnologias utilizadas
 
