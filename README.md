@@ -8,7 +8,7 @@ No contexto desse projeto, foram exercitados os pilares da POO, como Herança, A
 
 O escopo do projeto incluiu etapas como a criação de uma rota para cadastrar carros, um endpoint para listar carros, a escrita de testes para cobrir uma porcentagem da camada de Service, uma rota para atualizar carros por ID, uma rota para cadastrar motos, testes adicionais para cobrir uma porcentagem maior da camada de Service e uma rota para listar motos. Como bônus, foi implementada uma rota para atualizar motos por ID, além de mais testes para cobrir uma porcentagem maior da camada de Service.
 
-O projeto foi desenvolvido individualmente, com foco na aplicação dos princípios da POO na construção da API. O objetivo final era criar um sistema de gerenciamento de uma concessionária de veículos, utilizando o banco de dados MongoDB e o framework Mongoose.
+O projeto foi desenvolvido, com foco na aplicação dos princípios da POO na construção da API. O objetivo final era criar um sistema de gerenciamento de uma concessionária de veículos, utilizando o banco de dados MongoDB e Mongoose.
 
 ## Funcionalidades
 
