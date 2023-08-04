@@ -711,6 +711,7 @@ Para rodar os testes de integração desenvolvidos por mim, entre na pasta backe
 - Obrigatoriamente seus testes devem fazer stub do banco de dados;
 
 - Opcionalmente você pode parar o serviço do `MongoDB` em sua máquina e executar seus teste com o comando `npm run test:mocha`;
+- Execute o comando `test:coverage`; para analisar cobertura total das linhas;
 
 - Só será contabilizada a cobertura, se seus testes não conterem erros.
   
