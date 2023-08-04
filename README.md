@@ -746,9 +746,10 @@ Para rodar os testes de integração desenvolvidos por mim, entre na pasta backe
 
   <br>
 </details>
+
+04- Cobertura total das linhas dos arquivos da camada `Services` é maior ou igual a 100%;
+
 </details>
-
-
 
 ## Agradecimentos
 Gostaria de expressar minha profunda gratidão aos monitores e à Trybe por todo o suporte e orientação ao longo do projeto. Sua dedicação, conhecimento e disposição em ajudar foram fundamentais para o meu aprendizado e crescimento profissional. Sou grato pela oportunidade de fazer parte dessa comunidade de aprendizagem e por todo o apoio recebido durante essa jornada.
